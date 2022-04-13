@@ -1,0 +1,27 @@
+﻿<h1>Contents</h1>
+<a routerLink="add" class="btn btn-sm btn-success mb-2">Add Content</a>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th style="width: 30%">Content</th>
+            <th style="width: 10%"></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let content of contents">
+            <td>{{content.content}}</td>
+            <td style="white-space: nowrap">
+                <a routerLink="edit/{{content.id}}" class="btn btn-sm btn-primary mr-1">Edit</a>
+                <button (click)="deleteContent(content.id)" class="btn btn-sm btn-danger btn-delete-content" [disabled]="content.isDeleting">
+                    <span *ngIf="content.isDeleting" class="spinner-border spinner-border-sm"></span>
+                    <span *ngIf="!content.isDeleting">Delete</span>
+                </button>
+            </td>
+        </tr>
+        <tr *ngIf="!contents">
+            <td colspan="4" class="text-center">
+                <span class="spinner-border spinner-border-lg align-center"></span>
+            </td>
+        </tr>
+    </tbody>
+</table>

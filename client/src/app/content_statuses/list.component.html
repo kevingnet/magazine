@@ -1,0 +1,27 @@
+﻿<h1>ContentStatuses</h1>
+<a routerLink="add" class="btn btn-sm btn-success mb-2">Add ContentStatus</a>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th style="width: 30%">ContentStatus</th>
+            <th style="width: 10%"></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let contentStatus of contentStatuses">
+            <td>{{contentStatus.contentStatus}}</td>
+            <td style="white-space: nowrap">
+                <a routerLink="edit/{{contentStatus.id}}" class="btn btn-sm btn-primary mr-1">Edit</a>
+                <button (click)="deleteContentStatus(contentStatus.id)" class="btn btn-sm btn-danger btn-delete-contentStatus" [disabled]="contentStatus.isDeleting">
+                    <span *ngIf="contentStatus.isDeleting" class="spinner-border spinner-border-sm"></span>
+                    <span *ngIf="!contentStatus.isDeleting">Delete</span>
+                </button>
+            </td>
+        </tr>
+        <tr *ngIf="!contentStatuses">
+            <td colspan="4" class="text-center">
+                <span class="spinner-border spinner-border-lg align-center"></span>
+            </td>
+        </tr>
+    </tbody>
+</table>
