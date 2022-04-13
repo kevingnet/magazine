@@ -1,0 +1,27 @@
+﻿<h1>SubscriptionStatuses</h1>
+<a routerLink="add" class="btn btn-sm btn-success mb-2">Add SubscriptionStatus</a>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th style="width: 30%">SubscriptionStatus</th>
+            <th style="width: 10%"></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let subscriptionStatus of subscriptionStatuses">
+            <td>{{subscriptionStatus.subscriptionStatus}}</td>
+            <td style="white-space: nowrap">
+                <a routerLink="edit/{{subscriptionStatus.id}}" class="btn btn-sm btn-primary mr-1">Edit</a>
+                <button (click)="deleteSubscriptionStatus(subscriptionStatus.id)" class="btn btn-sm btn-danger btn-delete-subscriptionStatus" [disabled]="subscriptionStatus.isDeleting">
+                    <span *ngIf="subscriptionStatus.isDeleting" class="spinner-border spinner-border-sm"></span>
+                    <span *ngIf="!subscriptionStatus.isDeleting">Delete</span>
+                </button>
+            </td>
+        </tr>
+        <tr *ngIf="!subscriptionStatuses">
+            <td colspan="4" class="text-center">
+                <span class="spinner-border spinner-border-lg align-center"></span>
+            </td>
+        </tr>
+    </tbody>
+</table>
