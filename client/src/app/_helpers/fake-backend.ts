@@ -5,7 +5,9 @@ import { delay, materialize, dematerialize } from 'rxjs/operators';
 
 // array in local storage for registered users
 const usersKey = 'angular-10-registration-login-example-users';
-let users = JSON.parse(localStorage.getItem(usersKey)) || [];
+let users = JSON.parse(localStorage.getItem(usersKey)) || [
+    { id: 1, username: 'test', password: 'test', firstName: 'Test', lastName: 'User', email: 'test@test.com' }
+];
 
 @Injectable()
 export class FakeBackendInterceptor implements HttpInterceptor {
